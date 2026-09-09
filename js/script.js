@@ -78,9 +78,9 @@ getRandomQuote();
 function printQuote() {
   getRandomQuote();
   let quoteBox = " ";
-  quoteBox += `<p> ${currentQuote.quote} </p>
-        <p>${currentQuote.author} </p>
-        // <p>${currentQuote.citation}</>
+  quoteBox += `<h2> "${currentQuote.quote} "</h2>
+
+        <p>-${currentQuote.author}, ${currentQuote.citation}</p>
           <span >${currentQuote.date}</span>`;
 
   document.getElementById("quote-box").innerHTML = quoteBox;
