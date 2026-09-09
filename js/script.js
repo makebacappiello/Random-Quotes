@@ -71,9 +71,12 @@ getRandomQuote();
  ***/
 
 //this function prints the quotes to the screen and attaches it to the dom
+
 function printQuote() {
   let currentQuote = getRandomQuote();
+
   //actual quote in its original form
+
   let quoteBox = `<p class="quote">${currentQuote.quote}</p>
                 <p class="source">${currentQuote.author}`;
 
@@ -86,10 +89,10 @@ function printQuote() {
 
   if (currentQuote.date) {
     quoteBox += `<span class="year"> ${currentQuote.date}</span>`;
-  } else {
-    // otherwise just close off the QuoteBox
-    quoteBox += `</p> `;
   }
+  // close off the QuoteBox
+
+  quoteBox += `</p> `;
 
   document.getElementById("quote-box").innerHTML = quoteBox;
 }
