@@ -56,17 +56,12 @@ const quotes = [
 /***
  * `getRandomQuote` function
  ***/
-let currentQuote = " ";
-//this holds the empty string to be chosen later for the array
 
 function getRandomQuote() {
   // the function is using the math function to get a random quote from the variable get one quote from the index which will be generated from the variable randomIndex
-  let getOneQuote = () => {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    currentQuote = quotes[randomIndex];
-  };
-  getOneQuote();
-  //calling the function that gets the random quote
+
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
 }
 //calling the function that gets everything after calculation
 getRandomQuote();
@@ -75,13 +70,22 @@ getRandomQuote();
 //  * `printQuote` function
  ***/
 
+//this function prints the quotes to the screen and attaches it to the dom
 function printQuote() {
-  getRandomQuote();
-  let quoteBox = " ";
-  quoteBox += `<h2> "${currentQuote.quote} "</h2>
-
-        <p>-${currentQuote.author}, ${currentQuote.citation}</p>
-          <span >${currentQuote.date}</span>`;
+  let currentQuote = getRandomQuote();
+  //actual quote in its original form
+  let quoteBox = `<h2> ${currentQuote.quote} </h2>
+                 <p> ${currentQuote.author},</p>`;
+  //if a citation is included in the quote then add it
+  if (currentQuote.citation) {
+    quoteBox += ` <p>${currentQuote.citation}</p>`;
+  }
+  //if a date is included in the quote then add it
+  if (currentQuote.date) {
+    quoteBox += `<span> ${currentQuote.date}</span>`;
+  } else {
+    quoteBox += " ";
+  }
 
   document.getElementById("quote-box").innerHTML = quoteBox;
 }
