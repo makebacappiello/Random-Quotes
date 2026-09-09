@@ -14,10 +14,10 @@ project 1 - A Random Quote Generator
 const quotes = [
   {
     quote:
-      "A hug is a wonderful thing. It makes you feel wanted, needed, and loved all at the same time.",
+      "A hug is a wonderful thing. It makes you feel wanted, needed, and loved all at the same time",
     author: "Gregory Garcia and Dan Coscino",
     date: "October 26, 2010",
-    citation: "A Hug Is a Wonderful Thing. ",
+    citation: "A Hug Is a Wonderful Thing ",
   },
   {
     quote: "Believe you can and you're halfway there.",
@@ -29,13 +29,13 @@ const quotes = [
   },
   {
     quote:
-      "It is better with either to be silent, or to say things of more value than silence. Sooner throw a pearl at hazard than an idle or useless word; and do not say a little in many words, but a great deal in a few.",
+      "It is better with either to be silent, or to say things of more value than silence. Sooner throw a pearl at hazard than an idle or useless word; and do not say a little in many words, but a great deal in a few",
     author: "Pythagoras",
     date: "582 BC - 507 BC",
   },
   {
     quote:
-      "If the only tool you have is a hammer, you tend to see every problem as a nail.",
+      "If the only tool you have is a hammer, you tend to see every problem as a nail",
     author: "Abraham Maslow",
     date: "1908 - 1970",
     citation: "Toward a Psychology of Being.",
@@ -45,10 +45,10 @@ const quotes = [
       "Take the attitude of a student, never be too big to ask questions, never know too much to learn something new.",
     author: "Og Mandino",
     date: "1923 - 1996",
-    citation: "The Greatest Salesman in the World.",
+    citation: "The Greatest Salesman in the World",
   },
   {
-    quote: " There are too many people, and too few human beings.",
+    quote: " There are too many people, and too few human beings",
     author: "Robert Zend",
   },
 ];
@@ -74,17 +74,21 @@ getRandomQuote();
 function printQuote() {
   let currentQuote = getRandomQuote();
   //actual quote in its original form
-  let quoteBox = `<h2> ${currentQuote.quote} </h2>
-                 <p> ${currentQuote.author},</p>`;
+  let quoteBox = `<p class="quote">${currentQuote.quote}</p>
+                <p class="source">${currentQuote.author}`;
+
   //if a citation is included in the quote then add it
+
   if (currentQuote.citation) {
-    quoteBox += ` <p>${currentQuote.citation}</p>`;
+    quoteBox += ` <span class="citation">${currentQuote.citation}</span>`;
   }
   //if a date is included in the quote then add it
+
   if (currentQuote.date) {
-    quoteBox += `<span> ${currentQuote.date}</span>`;
+    quoteBox += `<span class="year"> ${currentQuote.date}</span>`;
   } else {
-    quoteBox += " ";
+    // otherwise just close off the QuoteBox
+    quoteBox += `</p> `;
   }
 
   document.getElementById("quote-box").innerHTML = quoteBox;
